@@ -1,0 +1,21 @@
+{% extends 'default.html' %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block title %}
+Products
+{{ products }}
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим все товары -->
+{% block content %}
+<h1>Все товары</h1>
+{{ products }}
+{% endblock content %}
+</body>
+</html>
