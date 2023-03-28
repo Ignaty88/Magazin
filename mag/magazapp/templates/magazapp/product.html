@@ -1,4 +1,4 @@
-<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+
 {% extends 'default.html' %}
 
 <!-- Название у нас будет Product -->
@@ -8,5 +8,29 @@ Product
 
 <!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
 {% block content %}
-<h1>{{ product }}</h1>
+<table>
+           <tr>
+               <td>Название</td>
+               <td>Описание</td>
+               <td>Категория</td>
+               <td>Цена</td>
+               <td>Количество</td>
+           </tr>
+<tr>
+               <!-- Не забываем, что переменные в шаблоне ничем не отличаются
+                от переменных в Python. Здесь также можно получать доступ к
+                полям объекта модели. Например, здесь мы выводим имя,
+                в следующем столбце описание, и т.д.  -->
+               <td>{{ product.name }}</td>
+               <td>{{ product.description }}</td>
+               <td>{{ product.category.name }}</td>
+               <td>{{ product.price }}</td>
+               <td>{{ product.quantity }}</td>
+           </tr>
+     <div class="links">
+        <a href="{{ product.get_next_by_id.get_absolute_url }}">Next</a>
+        <a href="#">on top</a>
+        <a href="{{ product.get_previous_by_id.get_absolute_url }}">Prev</a>
+    </div>
+     </table>
 {% endblock content %}

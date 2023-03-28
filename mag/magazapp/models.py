@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.shortcuts import reverse
 # Create your models here.
 
 
@@ -25,9 +26,12 @@ class Product(models.Model):
         validators=[MinValueValidator(0.0)],
     )
 
+
     def __str__(self):
         return f'{self.name.title()}: {self.description[:20]}'
 
+    def get_absolute_url(self):
+        return reverse('detail', args=[str(self.id)])
 
 class Order(models.Model):
     time_in = models.DateTimeField(auto_now_add=True)

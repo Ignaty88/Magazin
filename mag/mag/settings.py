@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'magazapp',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'django_filters',
 
 ]
 
